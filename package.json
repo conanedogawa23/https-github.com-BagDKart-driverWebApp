@@ -1,0 +1,35 @@
+{
+  "name": "driverwebapp",
+  "version": "1.0.0",
+  "description": "Web application to save the image of bills which is accessed by both admin and driver",
+  "main": "server.js",
+  "private": false,
+  "engine": {
+    "node": "6.*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BagDKart/driverWebApp.git"
+  },
+  "keywords": [
+    "\"\"\u001b[Dbagdkart",
+    "driver\""
+  ],
+  "author": "baluk1219@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BagDKart/driverWebApp/issues"
+  },
+  "homepage": "https://github.com/BagDKart/driverWebApp#readme",
+  "dependencies": {
+    "cf-deployment-tracker-client": "^0.1.3",
+    "cfenv": "^1.0.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1"
+  }
+}
