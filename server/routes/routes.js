@@ -15,6 +15,11 @@ api.get("/",(req, res)=> {
 	res.json(`test successful`);
 });
 
+api.post('/test', (req, res)=> {
+	let test = req.body.test;
+	res.json(test);
+});
+
 api.post('/adminLogin', adminLogin);
 
 api.post('/adminRegister', adminRegister);
