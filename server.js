@@ -7,7 +7,8 @@ const express = require("express"),
 	api = require("./server/routes/routes.js")(app, express),
 	cfenv = require('cfenv'),
 	appEnv = cfenv.getAppEnv(),
-	server = require('http').createServer(app);
+	server = require('http').createServer(app),
+	path = require('path');
 
 	if(appEnv.isLocal){
 		const a = require('dotenv');
@@ -84,9 +85,11 @@ mongo.connect(config.db)
     console.log("there is a error");
 });
 
-app.use(express.static(__dirname + '/driverWebAppFrontEnd/dist'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(__dirname + '/driverWebAppFrontEnd/dist'));
+// app.use('/login', express.static(path.join(__dirname, 'driverWebAppFrontEnd/dist')));
 app.use("/api",api);
 
 app.get("*",(req, res)=> {
