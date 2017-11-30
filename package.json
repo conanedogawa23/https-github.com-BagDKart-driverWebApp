@@ -58,5 +58,14 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BagDKart/driverWebApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BagDKart/driverWebApp/issues"
+  },
+  "homepage": "https://github.com/BagDKart/driverWebApp#readme",
+  "author": "Balasubramanyam"
 }
