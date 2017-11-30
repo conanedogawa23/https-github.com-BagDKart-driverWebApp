@@ -1,0 +1,34 @@
+{
+  "name": "driverwebapp",
+  "version": "1.0.0",
+  "description": "\"\"\u001b[DdriverApplicationWeb",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BagDKart/driverWebApp.git"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "baluk1219@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BagDKart/driverWebApp/issues"
+  },
+  "homepage": "https://github.com/BagDKart/driverWebApp#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cfenv": "^1.0.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-validator": "^4.3.0",
+    "jsonwebtoken": "^8.1.0",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.5"
+  }
+}
