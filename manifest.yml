@@ -1,7 +1,0 @@
----
-applications:
-- name: driverWebApp
-  domain: mybluemix.net
-  instances: 1
-  env:
-    NODE_ENV: cloud-foundry
