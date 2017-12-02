@@ -10,9 +10,9 @@ module.exports = (req, res)=>{
 		fname = req.body.fname,
 		lname = req.body.lname;
 
-	req.checkBody('username', 'Username is required').isEmail().notEmpty();
+	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'password is required').notEmpty();
-	req.checkBody('email', 'email must be secondary').notEmpty();
+	req.checkBody('email', 'email must be secondary').isEmail().notEmpty();
 	req.checkBody('fname', 'fname is required').notEmpty();
 	req.checkBody('lname', 'lname is required').notEmpty();
 
@@ -25,6 +25,11 @@ module.exports = (req, res)=>{
 		adminUserRegister.aEmail = email;
 		adminUserRegister.aFname = fname;
 		adminUserRegister.aLname = lname;
+		adminUserRegister.save().then((data)=> {
+			console.log("values inserted");
+		}).catch((err)=> {
+			console.log(err);
+		});
 		res.json(adminUserRegister);
 	}
 };

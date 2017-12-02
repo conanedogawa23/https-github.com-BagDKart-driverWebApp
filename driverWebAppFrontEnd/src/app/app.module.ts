@@ -1,36 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
+import { routing } from "./app.routes";
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-
-const appRoutes: Routes = [
-  {
-    path: 'login',
-    component: LoginFormComponent,
-    data: { title: 'Login Form' }
-  }
-]
+import { LoginFormComponent } from './login-form/index';
+import { AdminLoginComponent } from './admin-login/index';
+import { AuthGuard } from './authTokenManage/index';
+import { AuthenticationService } from './services/index';
+import { HomeComponent } from './home/index';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AdminLoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(
-      appRoutes, {
-        enableTracing: true
-      }
-    ),
+    routing,
+    HttpModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthenticationService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

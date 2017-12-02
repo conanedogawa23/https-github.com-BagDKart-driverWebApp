@@ -18,7 +18,6 @@ module.exports = (req, res)=>{
 			dUname: uname
 		},'dPwd', function(err, user){
 			const driverJSON = JSON.parse(JSON.stringify(user));
-			console.log(driverJSON);
 			if(err) return err;
 			if(!user) {
 				return res.json({ message: " he is not driver" });

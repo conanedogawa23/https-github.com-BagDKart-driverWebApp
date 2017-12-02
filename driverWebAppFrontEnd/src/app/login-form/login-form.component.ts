@@ -15,6 +15,7 @@ export class LoginFormComponent implements OnInit {
   }
   
   saveUser () {
+    console.log(this.user);
     return this.http.post('/api/adminRegister',this.user)
     .subscribe(res => {
       console.log(res);

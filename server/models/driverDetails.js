@@ -12,10 +12,8 @@ const driver = new schema ({
 	},
 	dPwd: {
 		type: String,
-		index: {
-			unique: true
-		},
-		required: true
+		required: true,
+		select: false
 	},
 	dEmail: {
 		type: String,
@@ -39,18 +37,19 @@ const driver = new schema ({
 
 driver.pre('save', function(next){
 	let driverInfo = this;
-	bcrypt.hash(driverInfo.password, 10).then((hash) => {
-        driverInfo.password = hash; //if there is no error we are going to hash
+	console.log(`${driverInfo} is the info passed from register`);
+	bcrypt.hash(driverInfo.dPwd, 10).then((hash) => {
+        driverInfo.dPwd = hash; //if there is no error we are going to hash
         console.log("authenticate as driver");
         next();
     }).catch((err) => {
-    	console.log("password not hashed :"+err);
+    	console.log(`password not hashed :${err}`);
     });
 });
 
 driver.methods.comparePassword = function(pwd){
 	let dInfo = this;
-	return bcrypt.compareSync(pwd, dInfo.password);
+	return bcrypt.compareSync(pwd, dInfo.dPwd);
 };
 
 const driverDetails = mongoose.model("driverDetails", driver);

@@ -12,17 +12,24 @@ module.exports = (req, res)=>{
 
 	req.checkBody('username','username must not be empty').notEmpty();
 	req.checkBody('password','password must not be empty').notEmpty();
+	req.checkBody('email','email must not be empty').notEmpty();
+	req.checkBody('email','email must be of a type').isEmail();
 	req.checkBody('fname','fname must not be empty').notEmpty();
 	req.checkBody('lname','lname must not be empty').notEmpty();
 
 	if(err) {
-		res.status(400).send({ "message": "Missing parameter" });
+		res.status(400).send({ "message": "Missing parameter or error in parameter" });
 	} else {
 		driverUser.dUname = uname;
 		driverUser.dPwd = pwd;
 		driverUser.dEmail = email;
 		driverUser.dFname = fname;
 		driverUser.dLname = lname;
+		driverUser.save().then((data)=> {
+			console.log(data);
+		}).catch((err)=> {
+			console.log(err);
+		});
 		res.json(driverUser);
 	}
 };

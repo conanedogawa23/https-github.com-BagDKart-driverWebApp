@@ -75,14 +75,14 @@ mongoose.connect(config.db, {
 }).then(()=> {
     console.log("connected to mongoose");
 }).catch((err)=> {
-    console.log("err in connecting to mongoose")
+    console.log(err);
 });
 
 mongo.connect(config.db)
     .then(()=> {
         console.log(`the database is ${config.db}`);
 }).catch((err) => {
-    console.log("there is a error");
+    console.log(err);
 });
 
 
