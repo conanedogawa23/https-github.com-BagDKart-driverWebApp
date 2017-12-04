@@ -5,14 +5,22 @@ const jwt = require("jsonwebtoken"),
 	driverRegister = require("../handlers/driver/driverRegister"),
 	adminRegister = require("../handlers/admin/adminRegister"),
 	adminLogin = require("../handlers/admin/adminLogin"),
+	cors = require('cors'),
 	expressValidator = require('express-validator');
 
 module.exports = (app, express)=> {
 const api = express.Router();
 api.use(expressValidator());
+api.use(cors());
 
-api.get("/",(req, res)=> {
-	res.json(`test successful`);
+api.get("/",(req, res, next)=> {
+	if(res.headersSent){
+		res.json(`test unsuccessful`);
+		console.log("sent headers");
+	} else {
+		res.json(`test successful`);
+		console.log("didnt sent headers");
+	}
 });
 
 api.post('/test', (req, res)=> {
@@ -44,7 +52,7 @@ api.use((req, res, next)=> {
 	}
 });
 
-api.post("/trial",(req, res)=>{
+api.post("/trial",(req, res, next)=>{
 	res.json(req.decoded);
 });
 

@@ -1,5 +1,6 @@
 const express = require("express"),
 	app = express(),
+	cors = require('cors'),
 	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
 	mongo = require("mongodb").MongoClient,
@@ -85,16 +86,17 @@ mongo.connect(config.db)
     console.log(err);
 });
 
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
+// app.use(function(req, res, next) {
+// 	res.header("Access-Control-Allow-Origin", "*");
+// 	res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+// 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// 	next();
+// });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 // app.use(express.static(__dirname + '/driverWebAppFrontEnd/dist'));
 // app.use('/dist', express.static(path.join(__dirname, 'driverWebAppFrontEnd/dist')));
+app.options('*', cors());
 app.use("/api",api);
 
 // app.get("*",(req, res)=> {

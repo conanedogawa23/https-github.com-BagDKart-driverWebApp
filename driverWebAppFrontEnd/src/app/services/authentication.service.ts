@@ -5,6 +5,7 @@ import { ReturnStatement } from "@angular/compiler/src/output/output_ast";
 import 'rxjs/add/operator/map';
 import { Router } from "@angular/router/src/router";
 import { HttpClient } from "@angular/common/http";
+import { RequestOptions } from "@angular/http/src/base_request_options";
 
 @Injectable()
 
@@ -13,7 +14,7 @@ export class AuthenticationService {
     // private endpointUrl = "http://localhost:6009/api/adminLogin";
     value = <any>{};
     // public xhr = new XMLHttpRequest();
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private headers: Headers) {
         // set token if saved in local storage
         var authToken = JSON.parse(localStorage.getItem('token'));
         this.token = authToken && authToken.token;
@@ -24,12 +25,8 @@ export class AuthenticationService {
         this.value.password = password;
         if(username){
         console.log(`${username} ${password} in auth service`);
-            // return 
-            // if(this.xhr){
-            //     this.xhr.open('POST', "http://localhost:6009/api/adminLogin", true);
-            //     this.xhr.send(this.value);
-            // }
-            return this.http.post("https://driverwebapp.mybluemix.net/api/adminLogin", this.value)
+        let headers = new Headers();
+        return this.http.post("https://driverwebapp.mybluemix.net/api/adminLogin", this.value,)
             .map((response: Response)=> {
                 if(Response) {
                     console.log(`${username} ${password} response sent`);

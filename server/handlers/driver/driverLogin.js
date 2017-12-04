@@ -2,7 +2,7 @@ const driverLogin = require('../../models/driverDetails'),
 	bcrypt = require('bcryptjs'),
 	newToken = require('../createToken');
 
-module.exports = (req, res)=>{
+module.exports = (req, res, next)=>{
 	let uname = req.body.username,
 		pwd = req.body.password,
 		err = req.validationErrors();

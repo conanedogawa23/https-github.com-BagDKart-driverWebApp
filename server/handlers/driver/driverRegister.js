@@ -1,6 +1,6 @@
 const driverRegister = require("../../models/driverDetails");
 
-module.exports = (req, res)=>{
+module.exports = (req, res, next)=>{
 	const driverUser = new driverRegister.driverDetails(),
 		err = req.validationErrors();
 

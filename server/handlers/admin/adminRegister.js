@@ -1,6 +1,6 @@
 const adminRegister = require("../../models/adminDetails");
 	
-module.exports = (req, res)=>{
+module.exports = (req, res, next)=>{
 	const adminUserRegister = new adminRegister.adminDetails(),
 		err = req.validationErrors();
 	
