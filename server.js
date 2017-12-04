@@ -87,18 +87,19 @@ mongo.connect(config.db)
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
-  });
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(__dirname + '/driverWebAppFrontEnd/dist'));
+// app.use(express.static(__dirname + '/driverWebAppFrontEnd/dist'));
 // app.use('/dist', express.static(path.join(__dirname, 'driverWebAppFrontEnd/dist')));
 app.use("/api",api);
 
-app.get("*",(req, res)=> {
-	res.sendFile(__dirname+"/driverWebAppFrontEnd/dist/index.html");
-});
+// app.get("*",(req, res)=> {
+// 	res.sendFile(__dirname+"/driverWebAppFrontEnd/dist/index.html");
+// });
 
 server.listen(appEnv.port, appEnv.bind, (err)=> {
 	console.log(`listening to port ${appEnv.port}`);
