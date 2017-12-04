@@ -88,13 +88,13 @@ mongo.connect(config.db)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(__dirname + '/driverWebAppFrontEnd/dist'));
+// app.use(express.static(__dirname + '/driverWebAppFrontEnd/dist'));
 // app.use('/login', express.static(path.join(__dirname, 'driverWebAppFrontEnd/dist')));
 app.use("/api",api);
 
-app.get("*",(req, res)=> {
-	res.sendFile(__dirname+"/driverWebAppFrontEnd/dist/index.html");
-});
+// app.get("*",(req, res)=> {
+// 	res.sendFile(__dirname+"/driverWebAppFrontEnd/dist/index.html");
+// });
 
 server.listen(appEnv.port, appEnv.bind, (err)=> {
 	console.log(`listening to port ${appEnv.port}`);
